@@ -1,0 +1,128 @@
+
+
+<html>
+<head>
+<title>RTIC Start Portaal 3.0</title>
+
+
+
+<script type="text/javascript">
+function open_win() {
+	{% for prefJS in preferenceJS %}
+		window.open('{{ prefJS.site.sitUrl }}');
+	{% endfor %}
+}
+</script>
+
+<style>
+body
+{
+font-family:Verdana;
+background-color:#EBF0F5;
+}
+
+strong
+{
+font-size:12;
+text-align:center;
+}
+
+.link
+{
+border:2px solid;
+border-radius:8px;
+border-color:#606060;
+width:290px;  
+font-size:12;
+font-weight:bold;
+display:block; 
+vertical-align:middle;
+margin:4px;
+background-color:#C1D2E0;
+}
+
+.footer
+{
+border:2px solid;
+border-radius:8px;
+border-color:#606060;
+width:1188px;
+height:35px;
+font-size:22;
+font-weight:bold;
+color:#004380;
+vertical-align:middle;
+margin:4px;
+}
+
+.checkbox {
+   width: 15px;
+   height: 15px;
+   margin: 6px;
+   position: relative;
+   background: #EBF0F5;
+   color: #EBF0F5;
+   border: 1px solid #BE965A;
+   border-radius: 2px;
+   -webkit-border-radius: 2px;
+   -moz-border-radius: 2px;
+}
+
+a:link {color:#004380;text-decoration:none;}      /* unvisited link */
+a:visited {color:#004380;}  /* visited link */
+a:hover {color:#EBF0F5;text-decoration:none;}  /* mouse over link */
+a:active {color:#004380;}  /* selected link */
+
+.Opslaan {
+		 color: #004380;
+		 font-weight:bold;
+		 width: 150px;
+		 height: 33px;
+		 background: #7f9bb3; 
+		}
+</style>
+</head>
+<body>
+<form action="#" id="formulier" method="post" accept-charset="UTF-8" xml:lang="nl">	
+<table>
+<tr>
+<td colspan=4 align=center>
+<div class=footer>
+
+
+Real Time Intelligence Center - Eenheid Oost Nederland
+
+</div>
+</td>
+</tr>
+<tr valign=top>
+{% if activeCategories %}
+	{% for cat in activeCategories %}
+			<td><center><strong>{{ cat.catOmschrijving }}</strong></center>
+			{% for pref in preferences %}
+				{% if pref.site.categorie == cat %}
+					<div class=link style='height:30px;'>
+						{% if pref.preStart %}
+							<input onclick="location.href = '{% url 'uncross' pref.id %}'" class=checkbox type='checkbox' checked>
+							<a href="{{ pref.site.sitUrl }}" target='_blank' title='Klik hier om {{ pref.site.sitOmschrijving }} op te starten'>{{ pref.site.sitOmschrijving }}</a>
+						{% else %}
+							<input onclick="location.href = '{% url 'cross' pref.id %}'" class=checkbox type='checkbox'>
+							<a href="{{ pref.site.sitUrl }}" target='_blank' title='Klik hier om {{ pref.site.sitOmschrijving }} op te starten'>{{ pref.site.sitOmschrijving }}</a>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
+			</td>
+	{% endfor %}
+{% endif %}
+</tr>
+</table>
+
+<br/>
+<center>
+<input type="button" onclick="open_win()" value="Applicaties starten" class="Opslaan" style='cursor:hand' title='Klik hier om applicatie(s) te starten'><br/><br/>
+</center>
+
+</form>
+</body>
+</html>
