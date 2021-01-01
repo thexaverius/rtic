@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'rtic3.herokuapp.com',
+    'localhost',
 ]
 
 
