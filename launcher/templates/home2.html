@@ -5,14 +5,9 @@
 {% block JavaScript%}
 <script type="text/javascript">
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function open_win() {
+function open_win() {
   {% for prefJS in preferenceJS %}
   window.open('{{ prefJS.site.sitUrl }}');
-  await sleep(10);
   {% endfor %}
 }
 
@@ -22,6 +17,7 @@ async function open_win() {
 {% block content%}
 <center><h2>Real Time Intelligence Center - Eenheid Oost Nederland</h2></center>
 <br/>
+<a button type="button" class="btn btn-outline-primary btn-sm" href="{% url 'test' %}" title='Klik hier om {{ pref.site.sitOmschrijving }} op te starten'>test</a>
 {% if user.is_authenticated %} 
 <div class="d-grid gap-2">
   <button type="button" onclick="open_win()" class="btn btn-outline-secondary">Applicaties starten</button>

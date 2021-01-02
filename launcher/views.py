@@ -5,8 +5,15 @@ from django.contrib import messages
 from django.db import connection
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.core.exceptions import ObjectDoesNotExist
+import webbrowser
 
 # Create your views here.
+def test(request):
+	webbrowser.open('http://www.nu.nl')
+	webbrowser.open('http://www.ad.nl')
+	webbrowser.open('http://www.telegraaf.nl')
+	return redirect('home')
+
 def login_user(request):
 	if request.method == 'POST':
 		username = request.POST['username']
