@@ -4,11 +4,18 @@
 
 {% block JavaScript%}
 <script type="text/javascript">
-function open_win() {
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function open_win() {
   {% for prefJS in preferenceJS %}
-    window.open('{{ prefJS.site.sitUrl }}');
+  window.open('{{ prefJS.site.sitUrl }}');
+  await sleep(10);
   {% endfor %}
 }
+
 </script>
 {% endblock%}
 
