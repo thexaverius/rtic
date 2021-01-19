@@ -138,3 +138,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #Import-export settings
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 IMPORT_EXPORT_SKIP_ADMIN_LOG = True
+
+django_heroku.settings(locals())
