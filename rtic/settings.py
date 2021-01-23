@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'rtic.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#Voorbeeld SQL-lite-connectie
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -90,6 +91,34 @@ DATABASES = {
     }
 }
 
+#Voorbeeld Postgres-connectie
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'rtic', 
+#         'USER': 'postgres', 
+#         'PASSWORD': '<password>',
+#         'HOST': '127.0.0.1', 
+#         'PORT': '5432',
+#     }
+# }
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
+
+#Voorbeeld mysql-conectie
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'rtic',
+#         'USER': 'root',
+#         'PASSWORD': '<password>',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
